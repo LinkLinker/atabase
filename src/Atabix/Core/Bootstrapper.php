@@ -14,7 +14,6 @@ class Bootstrapper {
 	
 	public function __construct($kernel) {
 		// Set Kernel
-		throw new Exceptions\HTTPErrorException();
 		switch($kernel) {
 			case static::KERNEL_DEV:
 				$this->kernel=static::KERNEL_DEV;
@@ -42,28 +41,32 @@ class Bootstrapper {
 		switch($this->kernel) {
 			case static::KERNEL_DEV:
 				error_reporting(E_ALL);
-				set_error_handler("error_handler");
-				set_exception_handler("exception_handler");
 			break;
 			
 			case static::KERNEL_TEST:
 				error_reporting(E_ALL);
-				set_error_handler("error_handler");
-				set_exception_handler("exception_handler");
 			break;
 			
 			case static::KERNEL_STAGING:
 				error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-				set_error_handler("error_handler");
-				set_exception_handler("exception_handler");
+				set_error_handler(array($this, "errorHandler"));
+				set_exception_handler(array($this, "exceptionHandler"));
 			break;
 			
 			case static::KERNEL_LIVE:
 			default:
 				error_reporting(E_NONE);
-				set_error_handler("error_handler");
-				set_exception_handler("exception_handler");
+				set_error_handler(array($this, "errorHandler"));
+				set_exception_handler(array($this, "exceptionHandler"));
 			break;
 		}
+	}
+	
+	public function errorHandler($e) {
+		echo 'oops error';
+	}
+	
+	public function exceptionHandler($e) {
+		echo 'oops exception';
 	}
 }
