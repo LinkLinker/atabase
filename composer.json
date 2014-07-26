@@ -7,5 +7,6 @@
             "name": "Paul Hage",
             "email": "paul.hage@atabix.com"
         }
-    ]
+    ],
+    "minimum-stability": "stable"
 }
