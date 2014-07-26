@@ -1,0 +1,15 @@
+{
+    "name": "atabix/atabase",
+    "description": "Basic Framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Hage",
+            "email": "paul.hage@atabix.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+
+    }
+}
