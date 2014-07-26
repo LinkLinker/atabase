@@ -1,15 +1,20 @@
 <?
 
-require_once __DIR__.'/../vendor/autoload.php';
-
 use Atabix\Core as Atabase;
 
 
+$baseDir = __DIR__.'/..';
+require_once $baseDir.'/vendor/autoload.php';
+
+// Bootstrap Atabase
 try {
-	$bootstrapper=new Atabase\Bootstrapper('dev', __DIR__.'/..');
+	$bootstrapper=new Atabase\Bootstrapper('dev', $baseDir);
 	$bootstrapper->init();
 } catch(PDOException $e) {
-	echo $e->getMessage();
+	$logger = new Monolog\Logger('dblogger');
+	$logger->pushHandler(new Monolog\Handler\StreamHandler($baseDir.'/tmp/dbonnect.log', Monolog\Logger::DEBUG));
+	$logger->addCritical($e->getMessage());
+	
 	header(Atabase\Exceptions\HTTPStatusLookup::httpHeaderFor(500));
 	echo Atabase\Exceptions\HTTPStatusLookup::getMessageForCode(500).' - Database Connection Error';
 	exit();
@@ -17,6 +22,8 @@ try {
 	$e->terminate(" - Kernel Loading Failed");
 }
 
+
+// Route Request
 $router=new Atabase\RequestRouter();
 $router->routeRequest();
 
@@ -33,7 +40,7 @@ use Monolog\Handler\FirePHPHandler;
 // Create the logger
 $logger = new Monolog\Logger('my_logger');
 // Now add some handlers
-$logger->pushHandler(new Monolog\Handler\StreamHandler(__DIR__.'/my_app.log', Monolog\Logger::DEBUG));
+$logger->pushHandler(new Monolog\Handler\StreamHandler(__DIR__.'/tmp/my_app.log', Monolog\Logger::DEBUG));
 $logger->pushHandler(new Monolog\Handler\FirePHPHandler());
 
 // You can now use your logger
