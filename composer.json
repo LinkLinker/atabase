@@ -8,8 +8,5 @@
             "email": "paul.hage@atabix.com"
         }
     ],
-    "minimum-stability": "stable",
-    "require": {
-
-    }
+    "minimum-stability": "stable"
 }
