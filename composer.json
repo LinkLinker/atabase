@@ -8,12 +8,5 @@
             "email": "paul.hage@atabix.com"
         }
     ],
-    "minimum-stability": "dev",
-	"autoload": {
-        "psr-0": {
-            "Atabix": "Atabix/",
-            "Atabix\\Core": "Atabix/Core",
-            "Atabix\\Core\\Exceptions": "Atabix/Core/Exceptions"
-        }
-    }
+    "minimum-stability": "dev"
 }
