@@ -9,6 +9,9 @@
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+		"monolog/monolog": "dev-master"
+    },
     "autoload": {
         "psr-4": {"Atabix\\": "src/Atabix"}
     }
