@@ -15,5 +15,9 @@ class HTTPErrorException extends \Exception {
 	public function __construct() {
 		parent::__construct("Internal Server Error", 500);
 	}
+	
+	public function setReturnHeader() {
+		header(HTTPStatusLookup::httpHeaderFor($this->code));
+	}
 }
 
