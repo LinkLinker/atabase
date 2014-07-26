@@ -1,1 +1,4 @@
+/conf/
+/tmp/
 /vendor/
+.htaccess

@@ -15,5 +15,12 @@ class HTTPException extends \Exception {
 	public function setReturnHeader() {
 		header(HTTPStatusLookup::httpHeaderFor($this->code));
 	}
+	
+	public function terminate($extraMessage = '') {
+		$this->setReturnHeader();
+		header(HTTPStatusLookup::httpHeaderFor($this->code));
+		echo HTTPStatusLookup::getMessageForCode($this->code).' '.$extraMessage;
+		exit();
+	}
 }
 
