@@ -10,7 +10,7 @@ namespace Atabix\Core\Exceptions;
  * @package		Core\Exceptions
  * @version		2.0
  */
-class HTTPMovedPermanentlyException extends \Exception {
+class HTTPMovedPermanentlyException extends HTTPException {
 	
 	public function __construct() {
 		parent::__construct("Moved Permanently", 301);

@@ -10,14 +10,10 @@ namespace Atabix\Core\Exceptions;
  * @package		Core\Exceptions
  * @version		2.0
  */
-class HTTPErrorException extends \Exception {
+class HTTPErrorException extends HTTPException {
 	
 	public function __construct() {
 		parent::__construct("Internal Server Error", 500);
-	}
-	
-	public function setReturnHeader() {
-		header(HTTPStatusLookup::httpHeaderFor($this->code));
 	}
 }
 

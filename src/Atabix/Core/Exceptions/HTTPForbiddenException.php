@@ -10,7 +10,7 @@ namespace Atabix\Core\Exceptions;
  * @package		Core\Exceptions
  * @version		2.0
  */
-class HTTPForbiddenException extends \Exception {
+class HTTPForbiddenException extends HTTPException {
 	
 	public function __construct() {
 		parent::__construct("Forbidden", 403);

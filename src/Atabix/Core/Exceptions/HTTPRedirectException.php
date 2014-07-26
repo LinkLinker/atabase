@@ -10,7 +10,7 @@ namespace Atabix\Core\Exceptions;
  * @package		Core\Exceptions
  * @version		2.0
  */
-class HTTPRedirectException extends \Exception {
+class HTTPRedirectException extends HTTPException {
 	protected $redirectTo;
 	
 	public function __construct($redirectTo=null) {

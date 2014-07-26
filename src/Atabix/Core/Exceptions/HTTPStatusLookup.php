@@ -1,13 +1,6 @@
 <?php
-/**
- * File that contains the HTTPStatusLookup class
- *
- * @author		Atabix Solutions BV
- * @copyright	Atabix Solutions BV September 2012
- * @package		Core\Helpers
- * @version		2.0
- */
 
+namespace Atabix\Core\Exceptions;
 
 /**
  * StatusCodes provides named constants for
